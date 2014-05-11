@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+      <oData>
+        <District>15</District>
+        <CareOf>C/o Aija Sadurskis</CareOf>
+        <Street>Fatburs Brunnsgata 3</Street>
+        <City>STOCKHOLM</City>
+        <ZIP>11828</ZIP>
+        <EMail>info@centrumok.se</EMail>
+        <Nationality>SWE</Nationality>
+        <ExtId>636</ExtId>
+        <InvoiceNo>100</InvoiceNo>
+      </oData>

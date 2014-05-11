@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+    <Course>
+      <Id>1</Id>
+      <Updated>20140511184026</Updated>
+      <Name>Bana 1A</Name>
+      <Length>1234</Length>
+      <Controls>1;2;3;4;5;</Controls>
+      <oData>
+      </oData>
+    </Course>

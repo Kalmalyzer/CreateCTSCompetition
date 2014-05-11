@@ -29,16 +29,94 @@ def get_start_time_in_seconds():
 def get_current_updated_timestamp():
 	return timestamp.strftime('%Y%m%d%H%M%S')
 
-def create_oData():
+def create_meosdata_oData():
 
-	oData = ElementTree.parse('templates/oData.xml')
+	oData = ElementTree.parse('templates/meosdata-oData.xml')
 	oData.find('CardFee').text = config.config['rental price for SI-pin']
 	oData.find('EliteFee').text = "0"
 	oData.find('EntryFee').text = "0"
 	oData.find('YouthFee').text = "0"
 	oData.find('YouthAge').text = "0"
 	oData.find('LateEntryFactor').text = config.config['price increase for late registration, in percent'] + " %"
-	return oData
+	return oData.getroot()
+
+def find_all_controls_in_courses():
+	controls = []
+	for course in config.config['courses']:
+		for control_reference in course['controls']:
+			if not control_reference in controls:
+				controls.append(control_reference)
+	return controls
+
+def create_control(control_id):
+	control_tree = ElementTree.parse('templates/Control.xml')
+	control_tree.find('Id').text = control_id
+	control_tree.find('Updated').text = get_current_updated_timestamp()
+	control_tree.find('Numbers').text = control_id
+	return control_tree.getroot()
+	
+def create_controls():
+	controls = find_all_controls_in_courses()
+
+	control_list = ElementTree.Element("ControlList")
+	for control_description in controls:
+		control_list.append(create_control(control_description['id']))
+		
+	return control_list
+
+def create_course(course_description):
+	course_tree = ElementTree.parse('templates/course.xml')
+	course_tree.find('Id').text = course_description['id']
+	course_tree.find('Name').text = course_description['name']
+	course_tree.find('Updated').text = get_current_updated_timestamp()
+	course_tree.find('Length').text = course_description['length']
+	controls = ""
+	for control in course_description['controls']:
+		controls += control['id'] + ';'
+	course_tree.find('Controls').text = controls
+	return course_tree.getroot()
+	
+def create_courses():
+	course_list = ElementTree.Element("CourseList")
+	for course_description in config.config['courses']:
+		course_list.append(create_course(course_description))
+	return course_list
+
+
+def create_class_oData():
+	oData = ElementTree.parse('templates/Class-oData.xml')
+#	oData.find('ClassType').text = '.o.ppen' # TODO: convert .o. to swedish symbol, cannot have it stored in codebase tho
+	oData.find('ClassFee').text = "TODO: compute"
+	oData.find('HighClassFee').text = "TODO: compute"
+	oData.find('ClassFeeRed').text = "TODO: compute"
+	oData.find('HighClassFeeRed').text = "TODO: compute"
+#	oData.find('SortIndex').text = '10' # TODO: compute somehow
+	return oData.getroot()
+
+def create_class(class_description):
+	_class = ElementTree.parse('templates/Class.xml')
+	_class.find('Id').text = class_description['id']
+	_class.find('Name').text = class_description['name']
+	_class.find('Updated').text = get_current_updated_timestamp()
+	if class_description['has_multicourse']:
+		multicourse = ElementTree.Element('MultiCourse')
+		multicourse.text = "TODO"
+		_class.getroot().append(multicourse)
+	else:
+		course = ElementTree.Element('Course')
+		course.text = class_description['course']['id']
+		_class.getroot().append(course)
+
+	#TODO: add LegMethod as well... what is that?
+	
+	_class.getroot().append(create_class_oData())
+	return _class.getroot()
+
+def create_classes():
+	class_list = ElementTree.Element("ClassList")
+	for class_description in config.config['classes'].values():
+		class_list.append(create_class(class_description))
+	return class_list
 
 def create_competition():
 
@@ -48,7 +126,11 @@ def create_competition():
 	meosdata.find('ZeroTime').text = get_start_time_in_seconds()
 	meosdata.find('Updated').text = get_current_updated_timestamp()
 
-	meosdata.getroot().append(create_oData().getroot())
+	meosdata.getroot().append(create_meosdata_oData())
+
+	meosdata.getroot().append(create_controls())
+	meosdata.getroot().append(create_courses())
+	meosdata.getroot().append(create_classes())
 	
 	print prettify(meosdata.getroot())
 	

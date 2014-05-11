@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+      <oData>
+        <ClassType>Öppen</ClassType>
+        <ClassFee>90</ClassFee>
+        <HighClassFee>135</HighClassFee>
+        <ClassFeeRed>50</ClassFeeRed>
+        <HighClassFeeRed>75</HighClassFeeRed>
+        <SortIndex>10</SortIndex>
+      </oData>

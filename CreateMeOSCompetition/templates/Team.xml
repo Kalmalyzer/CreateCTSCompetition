@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+    <Team>
+      <Id>1</Id>
+      <StartNo>100</StartNo>
+      <Updated>20140511184501</Updated>
+      <Name>Lag 1</Name>
+      <Runners>1;2;3;4;</Runners>
+      <Class>1</Class>
+    </Team>
