@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+  <oData>
+    <CardFee>25</CardFee>
+    <EliteFee>130</EliteFee>
+    <EntryFee>90</EntryFee>
+    <YouthFee>50</YouthFee>
+    <YouthAge>16</YouthAge>
+    <PaymentDue>-1</PaymentDue>
+    <OrdinaryEntry>-1</OrdinaryEntry>
+    <LateEntryFactor>50 %</LateEntryFactor>
+    <UseEconomy>1</UseEconomy>
+    <UseSpeaker>1</UseSpeaker>
+    <MaxTime>-1</MaxTime>
+    <CurrencyFactor>1</CurrencyFactor>
+    <CurrencySymbol>kr</CurrencySymbol>
+    <CurrencySeparator>.</CurrencySeparator>
+  </oData>

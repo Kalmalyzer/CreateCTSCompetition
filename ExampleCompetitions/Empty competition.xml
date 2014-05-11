@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<meosdata>
+<Name>Centrum Team Sprint 2014</Name>
+<Date>2014-05-16</Date>
+<ZeroTime>61200</ZeroTime>
+<NameId>meos_20140511_175337_203</NameId>
+<Updated>20140511183201</Updated>
+<oData>
+<CardFee>25</CardFee>
+<EliteFee>130</EliteFee>
+<EntryFee>90</EntryFee>
+<YouthFee>50</YouthFee>
+<YouthAge>16</YouthAge>
+<PaymentDue>-1</PaymentDue>
+<OrdinaryEntry>-1</OrdinaryEntry>
+<LateEntryFactor>50 %</LateEntryFactor>
+<MaxTime>-1</MaxTime>
+<CurrencyFactor>1</CurrencyFactor>
+<CurrencySymbol>kr</CurrencySymbol>
+<CurrencySeparator>.</CurrencySeparator>
+</oData>
+<ControlList>
+</ControlList>
+<CourseList>
+</CourseList>
+<ClassList>
+</ClassList>
+<ClubList>
+</ClubList>
+<RunnerList>
+</RunnerList>
+<TeamList>
+</TeamList>
+<PunchList>
+</PunchList>
+<CardList>
+</CardList>
+<Lists>
+</Lists>
+</meosdata>
