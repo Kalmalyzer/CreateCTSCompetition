@@ -1,0 +1,24 @@
+[
+	{
+		"name" : "Herrar",
+		"forked_multileg_courses" : ["H-MixLA", "HKA", "HKB", "H-MixLB"],
+		"start" : "18:15:00"
+	},
+
+	{
+		"name" : "Damer",
+		"forked_multileg_courses" : ["DLA", "DKA", "DKB", "DLB"],
+		"start" : "18:10:00"
+	},
+
+	{
+		"name" : "HD32",
+		"forked_multileg_courses" : ["HD32HD110LA", "HD32-90KA", "HD32-90KB", "HD32HD110LB"],
+		"start" : "18:20:00"
+	},
+
+	{
+		"name" : "ÖM2",
+		"course" : "ÖM2"
+	}
+]
