@@ -2,7 +2,7 @@ import codecs
 import json
 
 config_defaults = {
-	'start' : '18:00:00',
+	'start' : '17:00:00',
 	'rental price for SI-pin' : '20',
 	'price increase for late registration, in percent' : '50',
 	}
