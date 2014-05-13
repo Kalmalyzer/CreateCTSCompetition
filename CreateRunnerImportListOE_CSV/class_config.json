@@ -1,0 +1,18 @@
+{
+	"ID_HERRAR" : { "meos_id" : "1" },
+	"ID_DAMER" : { "meos_id" : "2" },
+	"ID_MIX" : { "meos_id" : "3" },
+	"ID_HD20" : { "meos_id" : "4" },
+	"ID_D24" : { "meos_id" : "5" },
+	"ID_H24" : { "meos_id" : "7" },
+	"ID_D28" : { "meos_id" : "8" },
+	"ID_H28" : { "meos_id" : "9" },
+	"ID_D32" : { "meos_id" : "10" },
+	"ID_H32" : { "meos_id" : "11" },
+	"ID_MIX110" : { "meos_id" : "12" },
+	"ID_MIX90" : { "meos_id" : "13" },
+	"ID_MOTION" : { "meos_id" : "14" },
+	"ID_ÖM2" : { "meos_id" : "15" },
+	"ID_ÖM5" : { "meos_id" : "16" },
+	"ID_ÖM8" : { "meos_id" : "17" }
+}
