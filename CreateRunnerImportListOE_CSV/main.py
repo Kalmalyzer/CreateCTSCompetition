@@ -1,6 +1,7 @@
 
 import codecs
 import json
+import sys
 
 with open('class_config.json', 'r') as file:
 	class_config = json.load(file)
@@ -8,7 +9,6 @@ with open('class_config.json', 'r') as file:
 def load_registrations(filename):
 	with open(filename, 'r') as file:
 		return json.load(file)
-
 
 def generate_registration_entry(registration):
 
@@ -76,23 +76,29 @@ def generate_registration_entry(registration):
 		]
 	return columns
 
-def create_registrations_csv(registrations):
+def create_registrations_csv(registrations, late):
 
 	registrations_csv = 'Stno;Descr;Block;nc;Start;Time;Classifier;Club no.;Cl.name;City;Nat;Cl. no.;Short;Long;Legs;Num1;Num2;Num3;Text1;Text2;Text3;Start fee;Paid;Surname;First name;YB;S;Start;Finish;Time;Classifier;Chip;Rented;Database Id;Surname;First name;YB;S;Start;Finish;Time;Classifier;Chip;Rented;Database Id;Surname;First name;YB;S;Start;Finish;Time;Classifier;Chip;Rented;Database Id\n'
 	for registration in registrations:
-		registrations_csv += ';'.join(generate_registration_entry(registration)) + '\n'
+		if (late and registration['late'] == 1) or ((not late) and registration['late'] == 0):
+			registrations_csv += ';'.join(generate_registration_entry(registration)) + '\n'
 
 	return registrations_csv
 
-def save_registrations_csv(registrations_csv):
-	with codecs.open('registrations.csv', 'w', encoding='latin_1') as file:
+def save_registrations_csv(registrations_csv, filename):
+	with codecs.open(filename, 'w', encoding='latin_1') as file:
 		file.write(registrations_csv)
 
-def create_runner_import_list_OE_CSV():
+def create_runner_import_list_OE_CSV(registrations_fromdb_filename, registrations_early_filename, registrations_late_filename):
 
-	registrations = load_registrations('../ExtractDataFromDB/registrations.json')
-	registrations_csv = create_registrations_csv(registrations)
-	save_registrations_csv(registrations_csv)
+	registrations = load_registrations(registrations_fromdb_filename)
+	registrations_early_csv = create_registrations_csv(registrations, False)
+	save_registrations_csv(registrations_early_csv, registrations_early_filename)
+	registrations_late_csv = create_registrations_csv(registrations, True)
+	save_registrations_csv(registrations_late_csv, registrations_late_filename)
 
 if __name__ == '__main__':
-	create_runner_import_list_OE_CSV()
+	if len(sys.argv) != 4:
+		print "Usage: main.py <registrations from db.json> <early registrations.csv> <late registrations.csv>"
+	else:
+		create_runner_import_list_OE_CSV(sys.argv[1], sys.argv[2], sys.argv[3])
