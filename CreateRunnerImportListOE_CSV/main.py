@@ -13,14 +13,17 @@ def load_registrations(filename):
 def generate_registration_entry(registration):
 
 	class_meos_id = class_config[registration['class_id']]['meos_id']
+	reduced_fee = class_config[registration['class_id']]['reduced_fee']
 	team_name = registration['team_name']
 	legs = "4"
+	runner_year = "" if reduced_fee else "1900"
 	runner_1_name = registration['name_1']
 	runner_1_si_number = str(registration['si_1'])
 	runner_1_rented = "Yes" if registration['si_1'] == 0 else ""
 	runner_2_name = registration['name_2']
 	runner_2_si_number = str(registration['si_2'])
 	runner_2_rented = "Yes" if registration['si_2'] == 0 else ""
+
 
 	columns = [
 		"",	# Stno		stno
@@ -49,7 +52,7 @@ def generate_registration_entry(registration):
 
 		"",	# Surname
 		runner_1_name,	# First name
-		"",	# YB
+		runner_year,	# YB
 		"",	# S
 		"",	# Start
 		"",	# Finish
@@ -61,7 +64,7 @@ def generate_registration_entry(registration):
 
 		"",	# Surname
 		runner_2_name,	# First name
-		"",	# YB
+		runner_year,	# YB
 		"",	# S
 		"",	# Start
 		"",	# Finish
